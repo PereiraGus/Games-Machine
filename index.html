@@ -55,11 +55,26 @@
                 var demo2 = document.getElementById("demo2");
                 var demo3 = document.getElementById("demo3");
                 var demo4 = document.getElementById("demo4");
+
+                var mario = document.getElementById("mario");
+                var sonic = document.getElementById("sonic");
+                var ryu = document.getElementById("ryu");
+                var dk = document.getElementById("dk");
+
+                function showError(type){
+                        alert(`Valor${type} inválido.`)
+                }
                 function mostrarResultados(decimal,octal,hex,bin){
-                        demo1.innerHTML = ` ${decimal}`;
-                        demo2.innerHTML = ` ${octal}`;
-                        demo3.innerHTML = ` ${hex}`;
-                        demo4.innerHTML = ` ${bin}`;
+                        var invalid = "NaN";
+                        if(invalid == decimal||invalid == octal||invalid == hex||invalid == bin){
+                                showError("");
+                        }
+                        else{
+                                demo1.innerHTML = ` ${decimal}`;
+                                demo2.innerHTML = ` ${octal}`;
+                                demo3.innerHTML = ` ${hex}`;
+                                demo4.innerHTML = ` ${bin}`;
+                        } 
                 }
                 function limparValores(){
                         demo1.value = null;
@@ -83,50 +98,73 @@
                         sfx.play();
                 }
                 function converter_octal() {
-                        var octal = Number(ipt_octal.value);
-                        var octalResult = parseInt(octal, 8);
+                        var oct = ipt_octal.value;
+                        var onlyOct = true;
+                        var octValues = ['0','1','2','3','4','5','6','7'];
 
-                        var decimal = octalResult.toString(10);
-                        var bin = octalResult.toString(2);
-                        var hex = octalResult.toString(16);
-                        mostrarResultados(decimal,octal,hex,bin);
-                        limparValores();
+                        for(i = 0; oct.length > i; i++){
+                                onlyOct = octValues.includes(oct[i]);
+                        }
+                        if(onlyOct){
+                                var decimal = parseInt(oct, 8);
+                                var bin = decimal.toString(2);
+                                var hex = decimal.toString(16);
+                                mostrarResultados(decimal,oct,hex,bin);
+                                limparValores();
+                        }
+                        else{
+                                showError(" octal");
+                        }
 
                         var sfx = new Audio("assets/ring.wav");
                         sfx.volume = 0.2;
                         sfx.play();
                 }
                 function converter_hex() {
-                        var hex = ipt_hex.value;
-                        var hexadecimal = parseInt(hex, 16);
+                        var hex = (ipt_hex.value).toUpperCase();
+                        var onlyHex = true;
+                        var hexValues = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F']
 
-                        var decimal = hexadecimal.toString(10);
-                        var bin = hexadecimal.toString(2);
-                        var octal = hexadecimal.toString(8);
-                        mostrarResultados(decimal,octal,hex,bin);
-                        limparValores();
+                        for(i = 0; hex.length > i; i++){
+                                onlyHex = hexValues.includes(hex[i]);
 
+                        }
+                        if(onlyHex){
+                                var decimal = parseInt(hex, 16);
+                                var bin = decimal.toString(2);
+                                var octal = decimal.toString(8);
+                                mostrarResultados(decimal,octal,hex,bin);
+                                limparValores();
+                        }
+                        else{
+                                showError(" hexadecimal");
+                        }
                         var sfx = new Audio("assets/sf start.wav");
                         sfx.play();
                 }
                 function converter_bin() {
-                        var bin = Number(ipt_bin.value);
-                        var binResult = parseInt(bin, 2);
-
-                        var decimal = binResult.toString(10);
-                        var hex = binResult.toString(16);
-                        var octal = binResult.toString(8);
-                        mostrarResultados(decimal,hex,octal,bin);
-                        limparValores();
+                        var bin = ipt_bin.value;
+                        var onlyBinary = true;
+                        
+                        for(i = 0; bin.length > i; i++){
+                                onlyBinary = (bin[i] == 0 || bin[i] == 1);
+                        }
+                        if(onlyBinary){
+                                var decimal = parseInt(bin, 2);
+                                var hex = decimal.toString(16);
+                                var octal = decimal.toString(8);
+                                mostrarResultados(decimal,octal,hex,bin);
+                                limparValores();
+                        }
+                        else{
+                                showError(" binário"); 
+                        }
+                        dk.style = "margin-bottom:40px";
 
                         var sfx = new Audio("assets/howhigh.wav");
                         sfx.play();
                 }
 
-                var mario = document.getElementById("mario");
-                var sonic = document.getElementById("sonic");
-                var ryu = document.getElementById("ryu");
-                var dk = document.getElementById("dk");
                 function clickMario() {
                         var sfx = new Audio("assets/mario sfx.mp3");
                         sfx.play();
