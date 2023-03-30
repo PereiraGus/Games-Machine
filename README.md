@@ -3,7 +3,7 @@
 #### Veja uma desmonstração no Youtube:
 [![Clique aqui!](https://img.youtube.com/vi/KX1TvZHs2_4/0.jpg)](https://www.youtube.com/watch?v=KX1TvZHs2_4)<br>
 ### Desenvolvido por:
-- [Gustavo Pereira Castro](https://github.com/PereiraGus): Front-end
+- [Gustavo Pereira Castro](https://github.com/PereiraGus): Front-end e Back-end
 - [Larissa Miranda Sonoda](https://github.com/LarissaSonoda): Back-end
 - [Lucas Augusto Garcia](https://github.com/LucasAuGarcia): Back-end
 - [Professora Marise Miranda](https://www.linkedin.com/in/marise-miranda-49684646/): Código base
